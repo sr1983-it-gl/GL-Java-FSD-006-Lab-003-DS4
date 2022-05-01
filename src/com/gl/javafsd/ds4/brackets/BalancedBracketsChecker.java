@@ -8,45 +8,46 @@ public class BalancedBracketsChecker {
 	private String brackets;	
 	
 	public BalancedBracketsChecker(String brackets) {
-		this.brackets = brackets;				
+		this.brackets = brackets;			
 	}
 	
 	public boolean check() {
 		
-		// Quick check
-		
-		if (brackets.length() %2 != 0) {
+		// Quick Sanity check		
+		if (brackets.length() % 2 != 0) {
 			return false;
 		}
 		
 		Stack<Character> stack = new Stack<Character>();
 		
 		Set<Character> openBracketsSet 
-			= BracketsManager.getOpenBracketCharsSet();
+			= BracketsManager.getOpenBrackets();
 		Set<Character> closeBracketsSet 
-			= BracketsManager.getCloseBracketCharsSet();
+			= BracketsManager.getCloseBrackets();
 		
 		
 		for (int index = 0; index < brackets.length(); index ++) {
 			
 			char aChar = brackets.charAt(index);
 			
-			// If aChar belongs to 'open brackets'
 			if (openBracketsSet.contains(aChar)) {
 
-				// ( [
-				
 				stack.push(aChar);
 				
 			}else if (closeBracketsSet.contains(aChar)) {
-				
-				// ] )
-				
-				Bracket bracketObj = BracketsManager.getBracket(aChar);
-				
+								
+				char closedChar = aChar;
+
 				Character openCharFromStack = stack.pop();
 				
-				if (openCharFromStack.equals(bracketObj.getOpenChar())) {
+				// ( ) / [ ] -> RELATED
+				// ( } ->  NOT RELATED
+				
+				Bracket bracketObj 
+					= BracketsManager.getBracket(closedChar);
+				
+				if (openCharFromStack.equals(
+					bracketObj.getOpenBracket())) {
 					
 					// Match
 					continue;
@@ -55,6 +56,7 @@ public class BalancedBracketsChecker {
 				
 				System.out.println("Invalid character encountered "
 						+ "during traversal.." + aChar);
+				return false;
 			}			
 		}
 		

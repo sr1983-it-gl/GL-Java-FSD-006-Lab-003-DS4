@@ -1,26 +1,32 @@
 package com.gl.javafsd.ds4.brackets;
 
 public class Bracket {
-
-	private Character openChar;
-	private Character closeChar;
 	
-	public Bracket(Character openChar, Character closeChar) {
+	private Character openBracket;
+	private Character closeBracket;
+	
+	public Bracket(
+		Character openBracket, 
+		Character closeBracket) {
 		
-		this.openChar = openChar;
-		this.closeChar = closeChar;
+		this.openBracket = openBracket;
+		this.closeBracket = closeBracket;		
 	}
-	
-	public Character getOpenChar() {
-		return openChar;
+
+	public Character getOpenBracket() {
+		return openBracket;
 	}
-	public void setOpenChar(Character openChar) {
-		this.openChar = openChar;
+
+	public void setOpenBracket(Character openBracket) {
+		this.openBracket = openBracket;
 	}
-	public Character getCloseChar() {
-		return closeChar;
+
+	public Character getCloseBracket() {
+		return closeBracket;
 	}
-	public void setCloseChar(Character closeChar) {
-		this.closeChar = closeChar;
+
+	public void setCloseBracket(Character closeBracket) {
+		this.closeBracket = closeBracket;
 	}
+
 }

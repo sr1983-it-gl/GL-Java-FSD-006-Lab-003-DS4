@@ -14,24 +14,24 @@ public class BinarySearchTree {
 	}
 
 	private BinarySearchTreeNode insert(
-		BinarySearchTreeNode rootNode, Integer value){
+		BinarySearchTreeNode currentNode, Integer value){
 		
-		if (rootNode == null) {
+		if (currentNode == null) {
 			return newNode(value);					
-		} else if (value <= rootNode.getData()) {
+		} else if (value <= currentNode.getData()) {
 			
 			BinarySearchTreeNode newNode 
-				= insert(rootNode.getLeftNode(), value);
+				= insert(currentNode.getLeftNode(), value);
 			
-			rootNode.setLeftNode(newNode);
-			return rootNode; 
+			currentNode.setLeftNode(newNode);
+			return currentNode; 
 		}else {
 			
 			BinarySearchTreeNode newNode 
-				= insert(rootNode.getRightNode(), value);
+				= insert(currentNode.getRightNode(), value);
 			
-			rootNode.setRightNode(newNode);
-			return rootNode;
+			currentNode.setRightNode(newNode);
+			return currentNode;
 		}
 	}
 

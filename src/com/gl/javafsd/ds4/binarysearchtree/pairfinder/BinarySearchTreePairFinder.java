@@ -20,18 +20,21 @@ public class BinarySearchTreePairFinder {
 		findPairInternal(sum, tree.getRoot(), nodes);
 	
 		if (!found) {
-			System.out.println("For the sum [" + sum + "], Matching nodes NOT found");
+			System.out.println("For the sum [" 
+				+ sum + "], Matching nodes NOT found");
 		}
 	}
 	
-	private boolean findPairInternal(int sum, BinarySearchTreeNode aNode, 
-		Set<Integer> nodes) {
+	private boolean findPairInternal(int sum, 
+		BinarySearchTreeNode aNode, 
+			Set<Integer> nodes) {
 		
 		if (aNode == null) {
 			return false;
 		}
 
-		found = findPairInternal(sum, aNode.getLeftNode(), nodes);
+		found = findPairInternal(
+			sum, aNode.getLeftNode(), nodes);
 		if (found) {
 			return true;
 		}

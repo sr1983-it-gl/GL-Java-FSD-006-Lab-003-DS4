@@ -8,8 +8,15 @@ public class BracketsManager {
 
 	private static Set<Bracket> predefinedBrackets;
 	
+	public BracketsManager() {
+		// SOP (1)
+	}
+	
 	static {
+		
+		// SOP (Called from static)
 						
+		// new HashSet<>();
 		predefinedBrackets = new LinkedHashSet<Bracket>();
 		
 		// Round brackets / Function brackets
@@ -23,9 +30,14 @@ public class BracketsManager {
 		
 		// Angle Brackets 
 		predefinedBrackets.add(new Bracket('<', '>'));
+		
+//		// Angle Brackets 
+//		predefinedBrackets.add(new Bracket('M', 'W'));
+		
 	}
 	
-	public static Set<Character> getOpenBracketCharsSet(){		
+	// ( [ { <
+	public static Set<Character> getOpenBrackets(){		
 		
 		Set<Character> result = new LinkedHashSet<Character>();
 		
@@ -35,12 +47,13 @@ public class BracketsManager {
 			
 			Bracket bracket = iterator.next();
 			
-			result.add(bracket.getOpenChar());			
+			result.add(bracket.getOpenBracket());			
 		}		
 		return result;
 	}
 
-	public static Set<Character> getCloseBracketCharsSet(){
+	// ) ] } > 
+	public static Set<Character> getCloseBrackets(){
 		
 		Set<Character> result = new LinkedHashSet<Character>();
 		
@@ -50,7 +63,7 @@ public class BracketsManager {
 			
 			Bracket bracket = iterator.next();
 			
-			result.add(bracket.getCloseChar());			
+			result.add(bracket.getCloseBracket());			
 		}		
 		return result;
 	}
@@ -59,7 +72,8 @@ public class BracketsManager {
 				
 		for (Bracket predefinedBracket : predefinedBrackets) {
 			
-			if (predefinedBracket.getCloseChar().equals(closeBracket)) {
+			if (predefinedBracket.getCloseBracket().equals(
+					closeBracket)) {
 				return predefinedBracket;
 			}
 		}
